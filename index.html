@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6246e8">
+  <title>NadiaLab — Matematyka</title>
+  <style>
+    :root { color-scheme: light; --ink:#252238; --muted:#716e80; --purple:#6246e8; --pale:#f0edff; --line:#e8e5ef; --paper:#fbfaff; --gold:#fff0d1; }
+    * { box-sizing:border-box; } body { margin:0; background:linear-gradient(155deg,#f3f1ff,#fff9ed); color:var(--ink); font-family:ui-rounded,-apple-system,BlinkMacSystemFont,"SF Pro Rounded",sans-serif; min-height:100vh; }
+    main { max-width:490px; min-height:100vh; margin:auto; padding:env(safe-area-inset-top,16px) 18px calc(84px + env(safe-area-inset-bottom)); background:var(--paper); }
+    header { display:flex; align-items:center; justify-content:space-between; padding:14px 0 7px; } .brand { color:var(--purple); font-size:21px; font-weight:900; letter-spacing:-.6px; } .avatar { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#ffcf70; }
+    .dragon { width:115px; height:250px; margin:-19px auto -22px; background-image:url('assets/iskierka-poses-3d.png'); background-repeat:no-repeat; background-size:500% auto; background-position:0% center; filter:drop-shadow(0 10px 9px rgba(44,31,105,.18)); } .dragon.think { background-position:25% center; } .dragon.helping { background-position:50% center; } .dragon.celebrate { background-position:75% center; } .dragon.kind { width:150px; background-image:url('assets/iskierka-nadzieja-3d.png'); background-size:contain; background-position:center; }
+    h1 { margin:22px 0 7px; font-size:29px; letter-spacing:-1px; line-height:1.07; } h2 { font-size:22px; letter-spacing:-.5px; margin:0 0 10px; } p { line-height:1.45; } .muted { color:var(--muted); margin:0; }
+    .view { display:none; } .view.active { display:block; } .streak { margin:19px 0 14px; padding:10px 13px; background:var(--gold); border-radius:15px; color:#805900; font-size:13px; font-weight:800; display:flex; justify-content:space-between; }
+    .mission { background:var(--purple); color:#fff; border-radius:24px; padding:21px; margin:13px 0; } .eyebrow { text-transform:uppercase; letter-spacing:.7px; font-weight:900; font-size:11px; color:#ddd5ff; } .mission h2 { margin:7px 0 5px; font-size:23px; } .mission p { margin:0 0 17px; color:#eeeaff; font-size:14px; }
+    button { appearance:none; border:0; font:inherit; font-weight:850; cursor:pointer; } .primary { width:100%; border-radius:15px; background:#fff; color:#4a31c9; padding:13px; } .subject { width:100%; background:#f0edff; color:#393254; text-align:left; padding:16px; border-radius:18px; margin-top:12px; } .subject small { display:block; color:#716e80; font-weight:650; margin-top:4px; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:23px; padding:19px; margin:22px 0; box-shadow:0 6px 16px rgba(54,40,110,.06); } .progress { font-size:12px; font-weight:900; color:#6d688a; } .bar { height:7px; background:#eeeafd; border-radius:9px; margin:9px 0 24px; overflow:hidden; } .bar i { height:100%; display:block; background:var(--purple); border-radius:inherit; transition:width .3s; }
+    .question { font-size:21px; line-height:1.26; font-weight:900; margin-bottom:17px; } .answers { display:grid; gap:9px; } .answer { background:#f8f7fb; border:1px solid #e8e5ef; border-radius:14px; color:var(--ink); padding:14px; text-align:left; } .answer.chosen { background:#e5dfff; border-color:#6246e8; color:#3920a9; } .answer.correct { background:#e4f6e2; border-color:#69ad62; color:#24602c; } .answer.wrong { background:#ffe5e7; border-color:#dd7f87; color:#8a2530; }
+    .help { width:100%; margin-top:13px; padding:12px; background:var(--pale); border-radius:14px; color:#4e38bb; } .hint, .result { display:none; margin-top:12px; border-radius:13px; padding:12px; font-size:14px; line-height:1.4; } .hint { background:#eff9ed; color:#23612c; } .result { background:#f0edff; color:#3f3582; } .hint.show,.result.show { display:block; }
+    .next { display:none; margin-top:12px; width:100%; padding:13px; border-radius:14px; background:var(--purple); color:#fff; }.next.show { display:block; } .tip { font-size:12px; color:#767185; text-align:center; margin:16px 4px; }
+    .review { padding:16px; border:1px solid var(--line); border-radius:18px; background:#fff; margin:11px 0; } .review strong { display:block; margin-bottom:5px; }.review p { margin:0; font-size:14px; color:var(--muted); }.pill { display:inline-block; margin-top:9px; padding:5px 9px; border-radius:20px; color:#805900; background:var(--gold); font-size:11px; font-weight:850; }
+    nav { position:fixed; z-index:2; bottom:0; left:50%; transform:translateX(-50%); width:min(490px,100%); padding:9px 18px calc(9px + env(safe-area-inset-bottom)); background:rgba(251,250,255,.95); backdrop-filter:blur(10px); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(3,1fr); } nav button { background:transparent; color:#7c778c; padding:7px 1px; font-size:11px; line-height:1.4; } nav button.on { color:#5138cf; }
+  </style>
+</head>
+<body>
+  <main>
+    <header><span class="brand">NadiaLab</span><span class="avatar">🌟</span></header>
+    <section class="view active" id="home">
+      <div class="dragon" aria-label="Iskierka wita Nadię"></div><h1>Cześć, Nadia!<br>Gotowa na małą misję?</h1><p class="muted">Iskierka jest gotowa na wyprawę po Ułamkowej Wyspie.</p>
+      <div class="streak"><span>🔥 Uczysz się 3. dzień z rzędu</span><span id="done-count">0/10</span></div>
+      <div class="mission"><div class="eyebrow">Misja na dziś · ok. 12 minut</div><h2>Most Ułamków</h2><p>Dziesięć krótkich zadań: od porównywania po działania na ułamkach.</p><button class="primary" data-view="quiz">Zaczynamy</button></div>
+      <button class="subject" data-view="quiz">🔢&nbsp; Matematyka <small>Ułamki · dzisiejsza misja</small></button>
+    </section>
+    <section class="view" id="quiz">
+      <div class="dragon think" id="quiz-dragon" aria-label="Iskierka myśli nad zadaniem"></div><div class="card"><div class="progress" id="progress-label">ZADANIE 1 Z 10</div><div class="bar"><i id="progress-bar"></i></div><div class="question" id="question"></div><div class="answers" id="answers"></div><button class="help" id="hint-button">💡 Poproś Iskierkę o podpowiedź</button><div class="hint" id="hint"></div><div class="result" id="result"></div><button class="next" id="next-button">Dalej</button></div>
+      <p class="tip">Najpierw spróbuj samodzielnie. Podpowiedź nie zdradza odpowiedzi.</p>
+    </section>
+    <section class="view" id="review">
+      <h1>Powtórki</h1><p class="muted">Tu wracają tematy, które warto jeszcze utrwalić.</p>
+      <div id="review-list"><div class="review"><strong>Jeszcze nic tutaj nie ma</strong><p>Po misji pojawią się tylko zadania wymagające powtórki.</p></div></div>
+    </section>
+    <nav><button class="on" data-view="home">⌂<br>Dzisiaj</button><button data-view="quiz">✦<br>Ćwicz</button><button data-view="review">↻<br>Powtórki</button></nav>
+  </main>
+  <script>
+    const questions = [
+      { q:'Który ułamek jest większy?', a:['3/8','5/8','Są równe'], correct:1, hint:'Mianowniki są takie same. Porównaj więc liczniki: 3 i 5.', explain:'Przy tym samym mianowniku większy licznik oznacza większą część.' },
+      { q:'Ile to jest 1/2 + 1/2?', a:['1','1/2','2'], correct:0, hint:'Dwie połówki tworzą jedną całość.', explain:'1/2 + 1/2 = 1.' },
+      { q:'Który zapis oznacza jedną czwartą?', a:['1/4','4/1','1/1'], correct:0, hint:'Licznik mówi, ile części bierzemy. Mianownik — na ile podzielono całość.', explain:'Jedna z czterech równych części to 1/4.' },
+      { q:'Czy 2/6 i 1/3 oznaczają tę samą wartość?', a:['Tak','Nie'], correct:0, hint:'Spróbuj podzielić licznik i mianownik ułamka 2/6 przez 2.', explain:'2/6 po skróceniu przez 2 daje 1/3.' },
+      { q:'Oblicz: 2/3 + 1/6', a:['3/9','5/6','1/2'], correct:1, hint:'Najpierw zapisz 2/3 jako ułamek o mianowniku 6.', explain:'2/3 to 4/6, a 4/6 + 1/6 = 5/6.' },
+      { q:'Oblicz: 3/4 − 1/4', a:['2/4','1/2','Obie odpowiedzi są poprawne'], correct:2, hint:'Odejmij liczniki. Potem sprawdź, czy wynik można skrócić.', explain:'3/4 − 1/4 = 2/4, a 2/4 można skrócić do 1/2.' },
+      { q:'Ile to jest 2/3 z liczby 18?', a:['6','12','15'], correct:1, hint:'Najpierw podziel 18 na 3 równe części, a potem weź 2 z nich.', explain:'18 : 3 = 6, a 6 · 2 = 12.' },
+      { q:'Jaka jest odwrotność ułamka 3/5?', a:['5/3','3/5','2/5'], correct:0, hint:'W ułamku odwrotnym licznik i mianownik zamieniają się miejscami.', explain:'Odwrotność 3/5 to 5/3.' },
+      { q:'Zamień 1 1/2 na ułamek niewłaściwy.', a:['2/2','3/2','1/2'], correct:1, hint:'Jedna całość to 2 połówki. Dodaj jeszcze jedną połówkę.', explain:'1 1/2 = 2/2 + 1/2 = 3/2.' },
+      { q:'Oblicz: 3/4 : 1/2', a:['3/8','3/2','2/3'], correct:1, hint:'Dzielenie przez ułamek zamieniamy na mnożenie przez jego odwrotność.', explain:'3/4 : 1/2 = 3/4 · 2/1 = 6/4 = 3/2.' }
+    ];
+    let current=0, mistakes=[]; const $=s=>document.querySelector(s);
+    function showView(id) { document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id)); document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.view===id)); if(id==='review') renderReview(); if(id==='quiz') renderQuestion(); }
+    document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+    function setDragon(pose){ $('#quiz-dragon').className=`dragon ${pose}`; }
+    function renderQuestion(){ const item=questions[current]; setDragon('think'); $('#progress-label').textContent=`ZADANIE ${current+1} Z ${questions.length}`; $('#progress-bar').style.width=`${(current/questions.length)*100}%`; $('#question').textContent=item.q; $('#answers').innerHTML=''; item.a.forEach((text,index)=>{const button=document.createElement('button');button.className='answer';button.textContent=text;button.onclick=()=>answer(index,button);$('#answers').append(button);}); $('#hint').textContent=item.hint; $('#hint').className='hint'; $('#result').className='result'; $('#next-button').className='next'; $('#hint-button').disabled=false; }
+    function answer(index,button){ const item=questions[current]; document.querySelectorAll('.answer').forEach(b=>b.disabled=true); button.classList.add('chosen', index===item.correct?'correct':'wrong'); if(index!==item.correct){document.querySelectorAll('.answer')[item.correct].classList.add('correct'); mistakes.push(item.q); $('#result').textContent='Prawie! Iskierka mówi: spróbujmy z podpowiedzią, a potem wrócimy do tego zadania.';setDragon('kind');} else {$('#result').textContent='Iskierka świętuje: '+item.explain;setDragon('celebrate');} $('#result').classList.add('show'); $('#next-button').textContent=current===questions.length-1?'Zakończ misję':'Dalej'; $('#next-button').classList.add('show'); $('#done-count').textContent=`${current+1}/${questions.length}`; }
+    $('#hint-button').onclick=()=>{ $('#hint').classList.toggle('show'); setDragon('helping'); }; $('#next-button').onclick=()=>{if(current<questions.length-1){current++;renderQuestion();}else{localStorage.setItem('nadialab-mistakes',JSON.stringify(mistakes)); showView('review');}};
+    function renderReview(){ const saved=JSON.parse(localStorage.getItem('nadialab-mistakes')||'[]'); const list=$('#review-list'); if(!saved.length){list.innerHTML='<div class="review"><strong>Wspaniale — misja ukończona!</strong><p>Nie ma teraz pytań do powtórki. Jutro czeka nowa mała misja.</p><span class="pill">✓ Gotowe</span></div>';return;} list.innerHTML=saved.map(q=>`<div class="review"><strong>Warto powtórzyć</strong><p>${q}</p><span class="pill">Powtórz przy następnej misji</span></div>`).join(''); }
+    renderQuestion();
+  </script>
+</body>
+</html>
