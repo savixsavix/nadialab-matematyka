@@ -10,7 +10,17 @@
     * { box-sizing:border-box; } body { margin:0; background:linear-gradient(155deg,#f3f1ff,#fff9ed); color:var(--ink); font-family:ui-rounded,-apple-system,BlinkMacSystemFont,"SF Pro Rounded",sans-serif; min-height:100vh; }
     main { max-width:490px; min-height:100vh; margin:auto; padding:env(safe-area-inset-top,16px) 18px calc(84px + env(safe-area-inset-bottom)); background:var(--paper); }
     header { display:flex; align-items:center; justify-content:space-between; padding:14px 0 7px; } .brand { color:var(--purple); font-size:21px; font-weight:900; letter-spacing:-.6px; } .avatar { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#ffcf70; }
-    .dragon { width:115px; height:250px; margin:-19px auto -22px; background-image:url('assets/iskierka-poses-3d.png'); background-repeat:no-repeat; background-size:500% auto; background-position:0% center; filter:drop-shadow(0 10px 9px rgba(44,31,105,.18)); } .dragon.think { background-position:25% center; } .dragon.helping { background-position:50% center; } .dragon.celebrate { background-position:75% center; } .dragon.kind { width:150px; background-image:url('assets/iskierka-nadzieja-3d.png'); background-size:contain; background-position:center; }
+    .dragon { width:115px; height:250px; margin:-19px auto -22px; background-image:url('assets/iskierka-poses-3d.png'); background-repeat:no-repeat; background-size:500% auto; background-position:0% center; filter:drop-shadow(0 10px 9px rgba(44,31,105,.18)); transform-origin:center bottom; animation:dragon-float 3.2s ease-in-out infinite; will-change:transform; }
+    .dragon.think { background-position:25% center; animation:dragon-think 2.4s ease-in-out infinite; }
+    .dragon.helping { background-position:50% center; animation:dragon-help 1.7s ease-in-out infinite; }
+    .dragon.celebrate { background-position:75% center; animation:dragon-celebrate .72s cubic-bezier(.36,.07,.19,.97) infinite alternate; }
+    .dragon.kind { width:150px; background-image:url('assets/iskierka-nadzieja-3d.png'); background-size:contain; background-position:center; animation:dragon-kind 2.8s ease-in-out infinite; }
+    @keyframes dragon-float { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-9px) rotate(1.5deg); } }
+    @keyframes dragon-think { 0%,100% { transform:translateY(0) rotate(-2deg); } 45% { transform:translateY(-5px) rotate(2deg); } 70% { transform:translateY(-2px) rotate(-.5deg); } }
+    @keyframes dragon-help { 0%,100% { transform:translateY(0) rotate(-2deg); } 50% { transform:translateY(-7px) rotate(3deg); } }
+    @keyframes dragon-celebrate { from { transform:translateY(0) rotate(-4deg) scale(1); } to { transform:translateY(-16px) rotate(5deg) scale(1.06); } }
+    @keyframes dragon-kind { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-5px) scale(1.025); } }
+    @media (prefers-reduced-motion: reduce) { .dragon { animation:none; } }
     h1 { margin:22px 0 7px; font-size:29px; letter-spacing:-1px; line-height:1.07; } h2 { font-size:22px; letter-spacing:-.5px; margin:0 0 10px; } p { line-height:1.45; } .muted { color:var(--muted); margin:0; }
     .view { display:none; } .view.active { display:block; } .streak { margin:19px 0 14px; padding:10px 13px; background:var(--gold); border-radius:15px; color:#805900; font-size:13px; font-weight:800; display:flex; justify-content:space-between; }
     .mission { background:var(--purple); color:#fff; border-radius:24px; padding:21px; margin:13px 0; } .eyebrow { text-transform:uppercase; letter-spacing:.7px; font-weight:900; font-size:11px; color:#ddd5ff; } .mission h2 { margin:7px 0 5px; font-size:23px; } .mission p { margin:0 0 17px; color:#eeeaff; font-size:14px; }
