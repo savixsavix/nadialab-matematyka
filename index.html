@@ -11,18 +11,26 @@
     main { max-width:490px; min-height:100vh; margin:auto; padding:env(safe-area-inset-top,16px) 18px calc(84px + env(safe-area-inset-bottom)); background:var(--paper); }
     header { display:flex; align-items:center; justify-content:space-between; padding:14px 0 7px; } .brand { color:var(--purple); font-size:21px; font-weight:900; letter-spacing:-.6px; } .avatar { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#ffcf70; }
     .dragon { width:115px; height:250px; margin:-19px auto -22px; background-image:url('assets/iskierka-poses-3d.png'); background-repeat:no-repeat; background-size:500% auto; background-position:0% center; filter:drop-shadow(0 10px 9px rgba(44,31,105,.18)); transform-origin:center bottom; animation:dragon-float 3.2s ease-in-out infinite; will-change:transform; }
-    .dragon.wave { width:144px; background-image:url('assets/iskierka-wave-sprite.png'); background-size:400% auto; background-position:0% center; animation:dragon-wave 1.15s steps(3, end) infinite; }
+    .dragon.wave { width:144px; position:relative; background:none; animation:none; }
+    .dragon.wave .dragon-frame { position:absolute; inset:0; background-image:url('assets/iskierka-wave-sprite.png'); background-repeat:no-repeat; background-size:400% auto; background-position:0% center; opacity:0; animation-duration:2.4s; animation-timing-function:ease-in-out; animation-iteration-count:2; animation-fill-mode:both; }
+    .dragon.wave .dragon-frame:nth-child(1) { background-position:0% center; animation-name:wave-frame-one; }
+    .dragon.wave .dragon-frame:nth-child(2) { background-position:33.333% center; animation-name:wave-frame-two; }
+    .dragon.wave .dragon-frame:nth-child(3) { background-position:66.667% center; animation-name:wave-frame-three; }
+    .dragon.wave .dragon-frame:nth-child(4) { background-position:100% center; animation-name:wave-frame-four; }
     .dragon.think { background-position:25% center; animation:dragon-think 2.4s ease-in-out infinite; }
     .dragon.helping { background-position:50% center; animation:dragon-help 1.7s ease-in-out infinite; }
     .dragon.celebrate { background-position:75% center; animation:dragon-celebrate .72s cubic-bezier(.36,.07,.19,.97) infinite alternate; }
     .dragon.kind { width:150px; background-image:url('assets/iskierka-nadzieja-3d.png'); background-size:contain; background-position:center; animation:dragon-kind 2.8s ease-in-out infinite; }
-    @keyframes dragon-wave { from { background-position:0% center; } to { background-position:100% center; } }
+    @keyframes wave-frame-one { 0%,14% { opacity:1; } 24%,74% { opacity:0; } 86%,100% { opacity:1; } }
+    @keyframes wave-frame-two { 0%,14% { opacity:0; } 25%,34% { opacity:1; } 46%,100% { opacity:0; } }
+    @keyframes wave-frame-three { 0%,35% { opacity:0; } 47%,54% { opacity:1; } 66%,100% { opacity:0; } }
+    @keyframes wave-frame-four { 0%,55% { opacity:0; } 67%,74% { opacity:1; } 86%,100% { opacity:0; } }
     @keyframes dragon-float { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-9px) rotate(1.5deg); } }
     @keyframes dragon-think { 0%,100% { transform:translateY(0) rotate(-2deg); } 45% { transform:translateY(-5px) rotate(2deg); } 70% { transform:translateY(-2px) rotate(-.5deg); } }
     @keyframes dragon-help { 0%,100% { transform:translateY(0) rotate(-2deg); } 50% { transform:translateY(-7px) rotate(3deg); } }
     @keyframes dragon-celebrate { from { transform:translateY(0) rotate(-4deg) scale(1); } to { transform:translateY(-16px) rotate(5deg) scale(1.06); } }
     @keyframes dragon-kind { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-5px) scale(1.025); } }
-    @media (prefers-reduced-motion: reduce) { .dragon { animation:none; } }
+    @media (prefers-reduced-motion: reduce) { .dragon, .dragon.wave .dragon-frame { animation:none; } .dragon.wave .dragon-frame:first-child { opacity:1; } }
     h1 { margin:22px 0 7px; font-size:29px; letter-spacing:-1px; line-height:1.07; } h2 { font-size:22px; letter-spacing:-.5px; margin:0 0 10px; } p { line-height:1.45; } .muted { color:var(--muted); margin:0; }
     .view { display:none; } .view.active { display:block; } .streak { margin:19px 0 14px; padding:10px 13px; background:var(--gold); border-radius:15px; color:#805900; font-size:13px; font-weight:800; display:flex; justify-content:space-between; }
     .mission { background:var(--purple); color:#fff; border-radius:24px; padding:21px; margin:13px 0; } .eyebrow { text-transform:uppercase; letter-spacing:.7px; font-weight:900; font-size:11px; color:#ddd5ff; } .mission h2 { margin:7px 0 5px; font-size:23px; } .mission p { margin:0 0 17px; color:#eeeaff; font-size:14px; }
@@ -39,7 +47,7 @@
   <main>
     <header><span class="brand">NadiaLab</span><span class="avatar">🌟</span></header>
     <section class="view active" id="home">
-      <div class="dragon wave" aria-label="Iskierka macha do Nadii"></div><h1>Cześć, Nadia!<br>Gotowa na małą misję?</h1><p class="muted">Iskierka jest gotowa na wyprawę po Ułamkowej Wyspie.</p>
+      <div class="dragon wave" aria-label="Iskierka macha do Nadii"><span class="dragon-frame"></span><span class="dragon-frame"></span><span class="dragon-frame"></span><span class="dragon-frame"></span></div><h1>Cześć, Nadia!<br>Gotowa na małą misję?</h1><p class="muted">Iskierka jest gotowa na wyprawę po Ułamkowej Wyspie.</p>
       <div class="streak"><span>🔥 Uczysz się 3. dzień z rzędu</span><span id="done-count">0/10</span></div>
       <div class="mission"><div class="eyebrow">Misja na dziś · ok. 12 minut</div><h2>Most Ułamków</h2><p>Dziesięć krótkich zadań: od porównywania po działania na ułamkach.</p><button class="primary" data-view="quiz">Zaczynamy</button></div>
       <button class="subject" data-view="quiz">🔢&nbsp; Matematyka <small>Ułamki · dzisiejsza misja</small></button>
