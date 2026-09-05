@@ -11,10 +11,12 @@
     main { max-width:490px; min-height:100vh; margin:auto; padding:env(safe-area-inset-top,16px) 18px calc(84px + env(safe-area-inset-bottom)); background:var(--paper); }
     header { display:flex; align-items:center; justify-content:space-between; padding:14px 0 7px; } .brand { color:var(--purple); font-size:21px; font-weight:900; letter-spacing:-.6px; } .avatar { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#ffcf70; }
     .dragon { width:115px; height:250px; margin:-19px auto -22px; background-image:url('assets/iskierka-poses-3d.png'); background-repeat:no-repeat; background-size:500% auto; background-position:0% center; filter:drop-shadow(0 10px 9px rgba(44,31,105,.18)); transform-origin:center bottom; animation:dragon-float 3.2s ease-in-out infinite; will-change:transform; }
+    .dragon.wave { width:144px; background-image:url('assets/iskierka-wave-sprite.png'); background-size:400% auto; background-position:0% center; animation:dragon-wave 1.15s steps(4, end) infinite; }
     .dragon.think { background-position:25% center; animation:dragon-think 2.4s ease-in-out infinite; }
     .dragon.helping { background-position:50% center; animation:dragon-help 1.7s ease-in-out infinite; }
     .dragon.celebrate { background-position:75% center; animation:dragon-celebrate .72s cubic-bezier(.36,.07,.19,.97) infinite alternate; }
     .dragon.kind { width:150px; background-image:url('assets/iskierka-nadzieja-3d.png'); background-size:contain; background-position:center; animation:dragon-kind 2.8s ease-in-out infinite; }
+    @keyframes dragon-wave { from { background-position:0% center; } to { background-position:100% center; } }
     @keyframes dragon-float { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-9px) rotate(1.5deg); } }
     @keyframes dragon-think { 0%,100% { transform:translateY(0) rotate(-2deg); } 45% { transform:translateY(-5px) rotate(2deg); } 70% { transform:translateY(-2px) rotate(-.5deg); } }
     @keyframes dragon-help { 0%,100% { transform:translateY(0) rotate(-2deg); } 50% { transform:translateY(-7px) rotate(3deg); } }
@@ -37,7 +39,7 @@
   <main>
     <header><span class="brand">NadiaLab</span><span class="avatar">🌟</span></header>
     <section class="view active" id="home">
-      <div class="dragon" aria-label="Iskierka wita Nadię"></div><h1>Cześć, Nadia!<br>Gotowa na małą misję?</h1><p class="muted">Iskierka jest gotowa na wyprawę po Ułamkowej Wyspie.</p>
+      <div class="dragon wave" aria-label="Iskierka macha do Nadii"></div><h1>Cześć, Nadia!<br>Gotowa na małą misję?</h1><p class="muted">Iskierka jest gotowa na wyprawę po Ułamkowej Wyspie.</p>
       <div class="streak"><span>🔥 Uczysz się 3. dzień z rzędu</span><span id="done-count">0/10</span></div>
       <div class="mission"><div class="eyebrow">Misja na dziś · ok. 12 minut</div><h2>Most Ułamków</h2><p>Dziesięć krótkich zadań: od porównywania po działania na ułamkach.</p><button class="primary" data-view="quiz">Zaczynamy</button></div>
       <button class="subject" data-view="quiz">🔢&nbsp; Matematyka <small>Ułamki · dzisiejsza misja</small></button>
