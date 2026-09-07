@@ -1,5 +1,10 @@
 const $ = s => document.querySelector(s);
 const lessons = window.lessons;
+// Give the companion the flexible central space between question and controls.
+const companion=document.createElement('div');
+companion.className='companion-stage';
+companion.append($('#quiz-dragon'));
+$('#question').after(companion);
 const all = lessons.flatMap(l => l.questions.map((q,i) => ({...q,id:`${l.id}:${i}`})));
 let saved;
 try { saved = JSON.parse(localStorage.getItem('nadialab-v2') || 'null'); } catch {}

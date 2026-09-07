@@ -87,13 +87,26 @@
       #quiz .help { min-height:44px; margin-top:8px; padding:9px; }
       #quiz .hint { margin-top:8px; padding:9px; }
     }
-    .dragon { background-image:url('assets/iskierka-poses-dark.png'); }
+    .dragon { background-image:url('assets/iskierka-poses-transparent.png'); }
     .dragon.wave .dragon-frame { background-image:url('assets/iskierka-wave-dark.png'); }
-    .dragon.kind { background-image:url('assets/iskierka-sad-dark.png'); }
+    .dragon.kind { background-image:url('assets/iskierka-sad-transparent.png'); }
     #home .dragon.welcome { width:112px; height:150px; margin:0 auto; background-image:url('assets/iskierka-welcome-transparent.png'); background-size:contain; background-position:center; transform-origin:center; animation:welcome-zoom 5s ease-in-out infinite; }
     @keyframes welcome-zoom { 0%,100% { transform:scale(1); } 50% { transform:scale(1.04); } }
     @media (max-height:700px) { #home .dragon.welcome { width:78px; height:104px; } }
     @media (prefers-reduced-motion:reduce) { #home .dragon.welcome { animation:none; } }
+    #quiz .progress { padding-right:0; }
+    #quiz .companion-stage { flex:1 1 170px; min-height:80px; display:flex; align-items:center; justify-content:center; margin:0 0 12px; }
+    #quiz #quiz-dragon { position:static; width:100px; height:180px; max-height:100%; margin:0; animation:none; }
+    #quiz #quiz-dragon.kind { width:145px; }
+    #quiz .answers, #quiz.answered .result { margin-top:0; }
+    #quiz .card { min-height:0; }
+    @media (max-height:700px) {
+      #quiz .companion-stage { flex-basis:80px; min-height:60px; margin-bottom:6px; }
+      #quiz #quiz-dragon { width:54px; height:90px; }
+      #quiz #quiz-dragon.kind { width:80px; }
+      #quiz:has(.hint.show):not(.answered) .companion-stage { display:none; }
+    }
+    @media (max-height:620px) { #home .dragon.welcome { height:86px; } }
   </style>
 </head>
 <body>
