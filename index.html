@@ -142,6 +142,24 @@
       #home .dragon.welcome { width:90px; height:115px; }
     }
     @media (max-height:620px) { #home .dragon.welcome { height:78px; } .lesson-portrait { height:65px; } }
+    #quiz.answer-success .card { background:#f2fbf3; border-color:#88c998; }
+    #quiz.answer-success .result { background:#d9f1df; color:#185b2d; }
+    #quiz.answer-success .next, #quiz.answer-success .bar i { background:#237943; color:white; }
+    #quiz.answer-error .card { background:#fff5f4; border-color:#e7a29d; }
+    #quiz.answer-error .result { background:#fce0dd; color:#8b2924; }
+    #quiz.answer-error .next, #quiz.answer-error .bar i { background:#b63730; color:white; }
+    #quiz #quiz-dragon { background-size:500% auto; width:120px; }
+    #quiz #quiz-dragon.kind { background-size:contain; width:165px; }
+    #quiz.answered .companion-stage { height:clamp(140px,29svh,240px); }
+    #quiz.answered #quiz-dragon { width:150px; }
+    #quiz.answered #quiz-dragon.kind { width:190px; }
+    @media (max-height:700px) {
+      #quiz #quiz-dragon { width:66px; background-size:500% auto; }
+      #quiz #quiz-dragon.kind { width:85px; background-size:contain; }
+      #quiz.answered .companion-stage { height:155px; }
+      #quiz.answered #quiz-dragon { width:95px; }
+      #quiz.answered #quiz-dragon.kind { width:120px; }
+    }
   </style>
 </head>
 <body>

@@ -68,6 +68,8 @@ function start(id,title,qs) {
 function renderQuestion() {
   const s=session,item=s.questions[s.current],choice=s.answers[s.current];
   $('#quiz').classList.toggle('answered',choice!==undefined);
+  $('#quiz').classList.toggle('answer-success',choice!==undefined&&choice===item.correct);
+  $('#quiz').classList.toggle('answer-error',choice!==undefined&&choice!==item.correct);
   $('#quiz-dragon').className='dragon think';
   $('#progress-label').textContent=`${s.title} · ${s.current+1}/${s.questions.length}`;
   $('#progress-bar').style.width=`${(s.current+(choice!==undefined?1:0))/s.questions.length*100}%`;
@@ -78,7 +80,7 @@ function renderQuestion() {
   });
   $('#hint').textContent=item.hint;$('#hint').className='hint'+(s.hints[s.current]?' show':'');
   $('#result').className='result'+(choice!==undefined?' show':'');$('#result').setAttribute('aria-live','polite');
-  if(choice!==undefined){const good=choice===item.correct;$('#result').textContent=(good?'Dobra robota! ':'Spokojnie, przejdźmy przez to razem. ')+item.explain;$('#quiz-dragon').className='dragon '+(good?'celebrate':'kind');}
+  if(choice!==undefined){const good=choice===item.correct;$('#result').textContent=(good?'✓ Dobra odpowiedź! ':'✕ Tym razem nie. Spróbujmy razem. ')+item.explain;$('#quiz-dragon').className='dragon '+(good?'celebrate':'kind');}
   $('#next-button').className='next'+(choice!==undefined?' show':'');$('#next-button').textContent=s.current===s.questions.length-1?'Zakończ misję':'Dalej';
 }
 function answer(i){if(session.answers[session.current]!==undefined)return;session.answers[session.current]=i;renderQuestion();}
