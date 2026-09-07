@@ -5,6 +5,11 @@ const companion=document.createElement('div');
 companion.className='companion-stage';
 companion.append($('#quiz-dragon'));
 $('#question').after(companion);
+for(const id of ['intro','complete']) {
+  const portrait=document.createElement('div');portrait.className='lesson-portrait';
+  portrait.setAttribute('role','img');portrait.setAttribute('aria-label','Iskierka zaprasza do wspólnej nauki');
+  $('#'+id+' .card').prepend(portrait);
+}
 const all = lessons.flatMap(l => l.questions.map((q,i) => ({...q,id:`${l.id}:${i}`})));
 let saved;
 try { saved = JSON.parse(localStorage.getItem('nadialab-v2') || 'null'); } catch {}

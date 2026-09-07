@@ -107,6 +107,41 @@
       #quiz:has(.hint.show):not(.answered) .companion-stage { display:none; }
     }
     @media (max-height:620px) { #home .dragon.welcome { height:86px; } }
+    /* Content-sized panels: space surrounds the group, never separates its controls. */
+    main { min-height:100svh; }
+    .view.active { justify-content:center; min-height:calc(100svh - 120px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)); padding:8px 0; }
+    #intro .card, #quiz .card { flex:0 0 auto; margin:0; }
+    #intro .card { padding:16px; }
+    #intro h1 { margin:5px 0 10px; text-align:center; }
+    #intro .progress { margin:8px 0 4px; text-align:center; }
+    #intro-text { font-size:15px; line-height:1.4; }
+    #intro-example { margin:10px 0; padding:12px; background:var(--pale); border:0; font-size:14px; }
+    #start-lesson { margin-top:8px; background:var(--purple); color:white; }
+    .lesson-portrait { width:120px; height:155px; margin:0 auto; background:url('assets/iskierka-welcome-transparent.png') center / contain no-repeat; }
+    #complete .card { margin:0; text-align:center; }
+    #complete .help:first-of-type { background:var(--purple); color:white; }
+    #quiz .companion-stage { flex:0 0 auto; height:clamp(100px,22svh,190px); min-height:0; margin:4px 0 12px; }
+    #quiz #quiz-dragon { width:100px; height:100%; }
+    #quiz #quiz-dragon.kind { width:145px; }
+    #quiz .question { margin-bottom:4px; }
+    #quiz:has(.hint.show):not(.answered) .companion-stage { height:75px; }
+    #home .dragon.welcome { width:150px; height:190px; }
+    #home h1, #home > .muted { text-align:center; }
+    #map .subject { padding:18px; }
+    #review-list > p { background:var(--pale); border-radius:18px; padding:20px; }
+    @media (max-height:700px) {
+      .view.active { padding:4px 0; }
+      .lesson-portrait { width:75px; height:95px; }
+      #intro .card { padding:12px; }
+      #intro .progress { margin:4px 0; }
+      #intro-text { font-size:14px; }
+      #intro-example { font-size:13px; padding:9px; margin:6px 0; }
+      #quiz .companion-stage { height:90px; }
+      #quiz #quiz-dragon { width:54px; }
+      #quiz #quiz-dragon.kind { width:75px; }
+      #home .dragon.welcome { width:90px; height:115px; }
+    }
+    @media (max-height:620px) { #home .dragon.welcome { height:78px; } .lesson-portrait { height:65px; } }
   </style>
 </head>
 <body>
