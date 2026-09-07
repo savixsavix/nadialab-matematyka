@@ -31,10 +31,10 @@ p { line-height:1.4; margin:8px 0; }
 .companion-stage { flex:1 1 0; min-height:65px; position:relative; margin:8px 0; }
 .dragon,.lesson-portrait { background-repeat:no-repeat; background-position:center; background-size:contain; }
 #quiz-dragon { position:absolute; inset:0; width:100%; height:100%; filter:drop-shadow(0 5px 5px #29203318); }
-.dragon.think { background-image:url('assets/iskierka-think.webp'); }
-.dragon.helping { background-image:url('assets/iskierka-help.webp'); }
-.dragon.celebrate { background-image:url('assets/iskierka-happy.webp'); }
-.dragon.kind { background-image:url('assets/iskierka-sad.webp'); }
+.dragon.think { background-image:url('assets/iskierka-math-think.webp'); }
+.dragon.helping { background-image:url('assets/iskierka-math-welcome.webp'); }
+.dragon.celebrate { background-image:url('assets/iskierka-math-happy.webp'); }
+.dragon.kind { background-image:url('assets/iskierka-math-sad.webp'); }
 .answers { display:grid; gap:7px; }
 .answer { text-align:left; background:#f8f7fb; color:var(--ink); border:1px solid var(--line); }
 #hint-button { margin-top:8px; font-size:14px; }
@@ -58,13 +58,13 @@ p { line-height:1.4; margin:8px 0; }
 .eyebrow { font-size:10px; font-weight:900; letter-spacing:.7px; text-transform:uppercase; color:#e3daff; }
 .mission p { font-size:13px; margin:6px 0 12px; }
 #intro .card,#complete .card { flex:1; min-height:min-content; display:flex; flex-direction:column; }
-.lesson-portrait { flex:1 1 0; min-height:90px; width:100%; background-image:url('assets/iskierka-welcome.webp'); margin:6px 0 12px; }
+.lesson-portrait { flex:1 1 0; min-height:90px; width:100%; background-image:url('assets/iskierka-math-welcome.webp'); margin:6px 0 12px; }
 #intro-meta { order:-3; }
 #intro-title { order:-2; margin-bottom:4px; }
 #intro-text { font-size:15px; }
 #intro-example { background:var(--pale); color:#423577; border:0; font-size:14px; line-height:1.4; padding:12px; margin:4px 0 10px; }
 #complete h1 { order:-1; text-align:center; }
-#complete .lesson-portrait { background-image:url('assets/iskierka-happy.webp'); }
+#complete .lesson-portrait { background-image:url('assets/iskierka-math-happy.webp'); }
 #complete .help { margin-top:8px; }
 #complete .help:first-of-type { background:var(--purple); color:white; }
 .subject { display:block; width:100%; padding:15px; margin-top:10px; background:var(--pale); color:var(--ink); text-align:left; }
@@ -75,7 +75,7 @@ p { line-height:1.4; margin:8px 0; }
 .pager button:disabled { opacity:.35; }
 .review { padding:14px; border:1px solid var(--line); background:white; border-radius:18px; margin:9px 0; }
 .review p { margin:0; font-size:14px; }
-#map:after,#review:after { content:''; flex:1; min-height:60px; margin:10px 0 0; background:url('assets/iskierka-welcome.webp') center / contain no-repeat; }
+#map:after,#review:after { content:''; flex:1; min-height:60px; margin:10px 0 0; background:url('assets/iskierka-math-welcome.webp') center / contain no-repeat; }
 #review-list > .help { margin-top:12px; }
 @media (max-height:650px) {
  header { height:42px; } main { padding-left:12px; padding-right:12px; }

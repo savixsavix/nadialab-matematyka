@@ -7,7 +7,7 @@ companion.append($('#quiz-dragon'));
 $('#question').after(companion);
 for(const id of ['intro','complete']) {
   const portrait=document.createElement('div');portrait.className='lesson-portrait';
-  portrait.setAttribute('role','img');portrait.setAttribute('aria-label','Iskierka zaprasza do wspólnej nauki');
+  portrait.setAttribute('role','img');portrait.setAttribute('aria-label',id==='complete'?'Iskierka Matematyczka świętuje ukończenie misji':'Iskierka Matematyczka zaprasza do wspólnej nauki');
   $('#'+id+' .card').prepend(portrait);
 }
 const all = lessons.flatMap(l => l.questions.map((q,i) => ({...q,id:`${l.id}:${i}`})));
@@ -83,6 +83,8 @@ function renderQuestion() {
   $('#result').className='result'+(choice!==undefined?' show':'');$('#result').setAttribute('aria-live','polite');
   if(choice!==undefined){const good=choice===item.correct;$('#result').textContent=(good?'✓ Dobra odpowiedź! ':'✕ Tym razem nie. Spróbujmy razem. ')+item.explain;$('#quiz-dragon').className='dragon '+(good?'celebrate':'kind');}
   $('#next-button').className='next'+(choice!==undefined?' show':'');$('#next-button').textContent=s.current===s.questions.length-1?'Zakończ misję':'Dalej';
+  $('#quiz-dragon').setAttribute('role','img');
+  $('#quiz-dragon').setAttribute('aria-label','Iskierka Matematyczka '+(choice!==undefined?(choice===item.correct?'cieszy się z poprawnej odpowiedzi':'jest smutna, ale zachęca do kolejnej próby'):(s.hints[s.current]?'pomaga w zadaniu':'myśli nad zadaniem')));
 }
 function answer(i){if(session.answers[session.current]!==undefined)return;session.answers[session.current]=i;renderQuestion();}
 $('#hint-button').onclick=()=>{session.hints[session.current]=true;renderQuestion();};
