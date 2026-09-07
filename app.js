@@ -79,6 +79,7 @@ function renderQuestion() {
     b.onclick=()=>answer(i);$('#answers').append(b);
   });
   $('#hint').textContent=item.hint;$('#hint').className='hint'+(s.hints[s.current]?' show':'');
+  if(s.hints[s.current]&&choice===undefined)$('#quiz-dragon').className='dragon helping';
   $('#result').className='result'+(choice!==undefined?' show':'');$('#result').setAttribute('aria-live','polite');
   if(choice!==undefined){const good=choice===item.correct;$('#result').textContent=(good?'✓ Dobra odpowiedź! ':'✕ Tym razem nie. Spróbujmy razem. ')+item.explain;$('#quiz-dragon').className='dragon '+(good?'celebrate':'kind');}
   $('#next-button').className='next'+(choice!==undefined?' show':'');$('#next-button').textContent=s.current===s.questions.length-1?'Zakończ misję':'Dalej';
